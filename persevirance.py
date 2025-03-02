@@ -112,10 +112,17 @@ def press_tab_6_times():
 
 # Function to type the email and press Enter
 def type_email_and_submit(email):
-    pyautogui.write(email, interval=0.05)  # Type the email with slight delay
+    email_prefix = email.split("@")[0]  # Get the part before "@outlook.com"
+    
+    pyautogui.write(email_prefix, interval=0.05)  # Type the email prefix
     time.sleep(0.5)
+    
+    pyautogui.write("@outlook.com", interval=0.05)  # Type the domain manually
+    time.sleep(0.5)
+    
     pyautogui.press('enter')  # Press Enter to submit the email
     time.sleep(5)
+
 
 
 # Function to press Tab twice and type "Zidane" and press Enter
