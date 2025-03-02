@@ -23,7 +23,7 @@ if %ERRORLEVEL% NEQ 0 (
 :: Install required libraries
 echo Installing required Python libraries...
 python -m pip install --upgrade pip
-python -m pip install faker selenium plyer psutil pyautogui
+python -m pip install faker selenium plyer psutil pyautogui keyboard
 if %ERRORLEVEL% NEQ 0 (
     echo Failed to install Python libraries. Exiting...
     pause
