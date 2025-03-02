@@ -274,7 +274,7 @@ def main():
     open_aliexpress()
 
     # Press Tab 5 times to reach the email input field
-    press_tab_6_times()
+    press_tab_5_times()
 
     # Type the random email generated above and submit it
     type_email_and_submit(random_email)
