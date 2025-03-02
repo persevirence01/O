@@ -97,6 +97,8 @@ def focus_address_bar():
 
 # Function to paste the AliExpress URL in the address bar
 def open_aliexpress():
+    pyautogui.hotkey('ctrl', 'l')  # Focus the address bar
+    time.sleep(0.5)  # Short delay to ensure the address bar is focused
     pyautogui.write("https://login.aliexpress.com/?spm=a2g0o.login_signup.register.0.0.3e1a2d67UZoVAA")  # AliExpress URL
     pyautogui.press('enter')  # Press Enter to go to the URL
     time.sleep(5)  # Wait for the page to load
