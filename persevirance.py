@@ -110,13 +110,6 @@ def press_tab_6_times():
         pyautogui.press('tab')
         time.sleep(0.2)  # 0.2 second delay between each tab press
 
-
-
-    
-  import keyboard
-import pyautogui
-import time
-
 # Function to type the email and press Enter
 def type_email_and_submit(email):
     email_prefix = email.split("@")[0]  # Get the part before "@outlook.com"
