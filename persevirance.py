@@ -104,8 +104,8 @@ def open_aliexpress():
     time.sleep(5)  # Wait for the page to load
 
 # Function to simulate pressing Tab 5 times in 1 second with 0.2s delay
-def press_tab_5_times():
-    for _ in range(5):
+def press_tab_6_times():
+    for _ in range(6):
         pyautogui.press('tab')
         time.sleep(0.2)  # 0.2 second delay between each tab press
 
@@ -276,7 +276,7 @@ def main():
     open_aliexpress()
 
     # Press Tab 5 times to reach the email input field
-    press_tab_5_times()
+    press_tab_6_times()
 
     # Type the random email generated above and submit it
     type_email_and_submit(random_email)
