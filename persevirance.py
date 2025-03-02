@@ -113,15 +113,20 @@ def press_tab_6_times():
 
 
     
-   # Function to type the email and press Enter
+  import keyboard
+import pyautogui
+import time
+
+# Function to type the email and press Enter
 def type_email_and_submit(email):
     email_prefix = email.split("@")[0]  # Get the part before "@outlook.com"
     
     pyautogui.write(email_prefix, interval=0.05)  # Type the email prefix
     time.sleep(0.5)
     
-    # Press AltGr + 0 to type '@'
-    keyboard.press_and_release('alt+0')  # Use AltGr (or Alt+0 for some layouts)
+    # Press AltGr + à (or AltGr + 0 for some layouts) to type '@'
+    # Depending on layout, you might need to use either 'altgr' or 'ctrl+alt'
+    keyboard.press_and_release('alt+à')  # Simulate AltGr + à for '@' on some layouts
     
     time.sleep(0.2)
     
@@ -130,6 +135,7 @@ def type_email_and_submit(email):
     
     pyautogui.press('enter')  # Press Enter to submit the email
     time.sleep(5)
+
 
 
 
