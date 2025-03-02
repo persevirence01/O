@@ -13,6 +13,7 @@ import pyautogui
 import psutil
 import os
 import keyboard
+import pyperclip
 
 # Initialize logging for terminal output
 logging.basicConfig(level=logging.INFO)
@@ -116,16 +117,16 @@ def type_email_and_submit(email):
     
     pyautogui.write(email_prefix, interval=0.05)  # Type the email prefix
     time.sleep(0.5)
-    
-    # Press AltGr + à (or AltGr + 0 for some layouts) to type '@'
-    # Depending on layout, you might need to use either 'altgr' or 'ctrl+alt'
-    keyboard.press_and_release('alt+à')  # Simulate AltGr + à for '@' on some layouts
-    
+
+    # Copy '@' to clipboard and paste it
+    pyperclip.copy("@")
+    pyautogui.hotkey("ctrl", "v")  # Paste '@' symbol
+
     time.sleep(0.2)
-    
+
     pyautogui.write("outlook.com", interval=0.05)  # Type the rest of the email domain
     time.sleep(0.5)
-    
+
     pyautogui.press('enter')  # Press Enter to submit the email
     time.sleep(5)
 
