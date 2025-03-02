@@ -73,6 +73,12 @@ def is_firefox_open():
     return False
 
 
+
+time.sleep(2)
+driver.get("https://outlook.live.com/mail/0/")
+
+
+
 # Function to open CMD using Win + R shortcut and type 'start firefox'
 def open_cmd_and_run_firefox():
     pyautogui.hotkey('win', 'r')  # Open the Run window
@@ -135,17 +141,6 @@ def type_email_and_submit(email):
 
 
 
-# Function to press Tab twice and type "Zidane" and press Enter
-# Function to press Tab twice and type "Zidane" and press Enter
-def type_name_and_submit():
-    pyautogui.press('tab')  # Press Tab to move to the next field
-    time.sleep(0.2)
-    pyautogui.press('tab')  # Press Tab again
-    time.sleep(0.2)
-    pyautogui.write('Zidane', interval=0.05)  # Type "Zidane"
-    time.sleep(0.5)
-    pyautogui.press('enter')  # Press Enter to submit the form
-    
     # Switch to Outlook tab and scan for AliExpress email
     driver.switch_to.window(driver.window_handles[1])
     print("Switched to Outlook tab. Scanning for AliExpress email.")
