@@ -12,6 +12,7 @@ from plyer import notification
 import pyautogui
 import psutil
 import os
+import keyboard
 
 # Initialize logging for terminal output
 logging.basicConfig(level=logging.INFO)
@@ -110,16 +111,17 @@ def press_tab_6_times():
         time.sleep(0.2)  # 0.2 second delay between each tab press
 
 
-# Function to type the email and press Enter
+
+    
+   # Function to type the email and press Enter
 def type_email_and_submit(email):
     email_prefix = email.split("@")[0]  # Get the part before "@outlook.com"
     
     pyautogui.write(email_prefix, interval=0.05)  # Type the email prefix
     time.sleep(0.5)
     
-    pyautogui.keyDown("altgr")  # Hold AltGr key
-    pyautogui.press("0")  # Press 0 to type '@'
-    pyautogui.keyUp("altgr")  # Release AltGr key
+    # Press AltGr + 0 to type '@'
+    keyboard.press_and_release('alt+0')  # Use AltGr (or Alt+0 for some layouts)
     
     time.sleep(0.2)
     
