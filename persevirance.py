@@ -117,11 +117,18 @@ def type_email_and_submit(email):
     pyautogui.write(email_prefix, interval=0.05)  # Type the email prefix
     time.sleep(0.5)
     
-    pyautogui.write("@outlook.com", interval=0.05)  # Type the domain manually
+    pyautogui.keyDown("shift")  # Hold Shift key
+    pyautogui.press("0")  # Press 0 to type '@'
+    pyautogui.keyUp("shift")  # Release Shift key
+    
+    time.sleep(0.2)
+    
+    pyautogui.write("outlook.com", interval=0.05)  # Type the rest of the email domain
     time.sleep(0.5)
     
     pyautogui.press('enter')  # Press Enter to submit the email
     time.sleep(5)
+
 
 
 
