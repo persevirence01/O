@@ -75,7 +75,9 @@ def is_firefox_open():
 
 
 time.sleep(2)
-driver.get("https://outlook.live.com/mail/0/")
+logging.info("16. Opening Outlook mail in the same tab.")
+driver.get("https://outlook.live.com/mail/0/")  # Opens in the same tab
+time.sleep(5)  # Allow time to load the page
 
 
 
