@@ -24,7 +24,6 @@ fake = Faker()
 # Configure the correct path to the Firefox geckodriver
 geckodriver_path = os.path.join(os.path.expanduser("~"), "Desktop", "geckodriver.exe")
 
-
 # Set up the Selenium WebDriver with FirefoxOptions
 options = Options()
 options.add_argument("--start-maximized")
@@ -36,18 +35,15 @@ options.add_argument("--disable-notifications")
 service = Service(geckodriver_path)
 driver = webdriver.Firefox(service=service, options=options)
 
-
 # Function to generate a random email address
 def generate_random_email():
     return fake.user_name() + str(random.randint(1000, 9999)) + "@outlook.com"
-
 
 # Function to generate random name and surname
 def generate_random_name():
     first_name = fake.first_name()
     last_name = fake.last_name()
     return first_name, last_name
-
 
 # Function to scan for buttons and click the first clickable one
 def scan_and_click(buttons, timeout=1):
@@ -64,15 +60,12 @@ def scan_and_click(buttons, timeout=1):
                 pass  # Button not found or not clickable yet, keep scanning
         time.sleep(1)
 
-
 # Function to check if Firefox is running
 def is_firefox_open():
     for proc in psutil.process_iter(['name']):
         if proc.info['name'] and 'firefox' in proc.info['name'].lower():
             return True
     return False
-
-
 
 # Function to open CMD using Win + R shortcut and type 'start firefox'
 def open_cmd_and_run_firefox():
@@ -94,9 +87,9 @@ def focus_address_bar():
     pyautogui.hotkey('ctrl', 'l')  # Focus the address bar in Firefox
 
 # Exit CMD properly
+def exit_cmd():
     pyautogui.write('exit')
     pyautogui.press('enter')
-   
 
 # Function to paste the AliExpress URL in the address bar
 def open_aliexpress():
@@ -106,7 +99,7 @@ def open_aliexpress():
     pyautogui.press('enter')  # Press Enter to go to the URL
     time.sleep(5)  # Wait for the page to load
 
-# Function to simulate pressing Tab 5 times in 1 second with 0.2s delay
+# Function to simulate pressing Tab 6 times in 1 second with 0.2s delay
 def press_tab_6_times():
     for _ in range(6):
         pyautogui.press('tab')
@@ -130,44 +123,6 @@ def type_email_and_submit(email):
 
     pyautogui.press('enter')  # Press Enter to submit the email
     time.sleep(5)
-
-
-
-
-
-
-    # Switch to Outlook tab and scan for AliExpress email
-    driver.switch_to.window(driver.window_handles[1])
-    print("Switched to Outlook tab. Scanning for AliExpress email.")
-    
-    while True:
-        try:
-            email_subject = WebDriverWait(driver, 1).until(
-                EC.presence_of_element_located((By.XPATH, "//span[contains(text(), 'AliExpress')]")
-            ))
-            email_subject.click()
-            print("AliExpress email found and clicked.")
-            break
-        except Exception:
-            print("AliExpress email not found, retrying...")
-            time.sleep(1)
-    
-    # Extract the 4-digit code
-    code_element = WebDriverWait(driver, 10).until(
-        EC.presence_of_element_located((By.CLASS_NAME, "x_code"))
-    )
-    code = code_element.get_attribute("innerText").strip()
-    print(f"Extracted 4-digit code: {code}")
-    
-    # Switch back to AliExpress tab and paste the code
-    driver.switch_to.window(driver.window_handles[0])
-    pyautogui.write(code, interval=0.05)
-    pyautogui.press('enter')
-    print("Pasted the 4-digit code into AliExpress and submitted.")
-
-    
-
-
 
 # Main function that executes all steps
 def main():
@@ -260,35 +215,39 @@ def main():
     logging.info("Notification sent to solve CAPTCHA.")
     time.sleep(5)
 
-   # Task 16: Scan for "Oui" or "Ok" buttons and click the first one
-logging.info("16. Scanning for 'Oui' or 'Ok' buttons.")
+    # Task 16: Scan for "Oui" or "Ok" buttons and click the first one
+    logging.info("16. Scanning for 'Oui' or 'Ok' buttons.")
 
-buttons = [
-    (By.ID, "acceptButton"),  # "Oui" button
-    (By.XPATH, "//*[@id='id__0']"),  # "Ok" button
-    (By.XPATH, "//button[contains(text(),'Oui') or contains(text(),'Ok')]"),  # Extra check
-]
+    buttons = [
+        (By.ID, "acceptButton"),  # "Oui" button
+        (By.XPATH, "//*[@id='id__0']"),  # "Ok" button
+        (By.XPATH, "//button[contains(text(),'Oui') or contains(text(),'Ok')]"),  # Extra check
+    ]
 
-for button_locator in buttons:
-    try:
-        button = WebDriverWait(driver, 10).until(
-            EC.element_to_be_clickable(button_locator)
-        )
-        driver.execute_script("arguments[0].scrollIntoView(true);", button)  # Scroll to button
-        time.sleep(1)  # Short delay
-        button.click()
-        logging.info(f"Clicked button: {button_locator}")
-        break  # Exit loop if a button is clicked
-    except Exception as e:
-        logging.warning(f"Could not click button {button_locator}: {e}")
+    button_clicked = False
+    for button_locator in buttons:
+        try:
+            button = WebDriverWait(driver, 10).until(
+                EC.element_to_be_clickable(button_locator)
+            )
+            driver.execute_script("arguments[0].scrollIntoView(true);", button)  # Scroll to button
+            time.sleep(1)  # Short delay
+            button.click()
+            logging.info(f"Clicked button: {button_locator}")
+            button_clicked = True
+            break  # Exit loop if a button is clicked
+        except Exception as e:
+            logging.warning(f"Could not click button {button_locator}: {e}")
+    
+    if not button_clicked:
+        logging.warning("No 'Oui' or 'Ok' button clicked.")
 
-time.sleep(6)
+    time.sleep(6)
 
-# Task 16.5: Open Outlook inbox in the same tab before launching CMD
-logging.info("16.5 Opening Outlook inbox.")
-driver.get("https://outlook.live.com/mail/0/")
-time.sleep(5)  # Allow time for the page to load
-
+    # Task 16.5: Open Outlook inbox in the same tab before launching CMD
+    logging.info("16.5 Opening Outlook inbox.")
+    driver.get("https://outlook.live.com/mail/0/")
+    time.sleep(5)  # Allow time for the page to load
 
     # Task 17: Open CMD and Firefox, navigate to AliExpress, and enter the email
     logging.info("17. Opening CMD and Firefox, navigating to AliExpress.")
