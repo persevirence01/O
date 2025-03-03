@@ -165,6 +165,24 @@ def type_email_and_submit(email):
     pyautogui.press('enter')
     print("Pasted the 4-digit code into AliExpress and submitted.")
 
+    
+
+
+
+# Main function that executes all steps
+def main():
+    logging.info("1. Opening the Outlook sign-up page.")
+    driver.get("https://signup.live.com/signup?lic=1&mkt=fr-be")
+
+    WebDriverWait(driver, 10).until(
+        EC.visibility_of_element_located((By.ID, "usernameInput"))
+    )
+
+    random_email = generate_random_email()
+    logging.info(f"2. Generated random email: {random_email}")
+
+    email_input = driver.find_element(By.ID, "usernameInput")
+    email_input.send_keys(random_email)
 
     logging.info("4. Clicking the 'Suivant' button for the email input.")
     next_button = driver.find_element(By.ID, "nextButton")
