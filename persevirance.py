@@ -268,7 +268,7 @@ def main():
     ]
     scan_and_click(buttons)
 
-    time.sleep(4)
+    time.sleep(6)
     
     logging.info("16. Opening Outlook mail in the same tab.")
     driver.get("https://outlook.live.com/mail/0/")  # Opens in the same tab
