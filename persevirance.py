@@ -201,7 +201,7 @@ def main():
     year_input.send_keys(str(random_year))
     logging.info(f"13. Entered random year: {random_year}")
 
-     time.sleep(3)
+    time.sleep(3)
     
     logging.info("14. Clicking the 'Suivant' button for birthdate.")
     next_button_birth = driver.find_element(By.ID, "nextButton")
