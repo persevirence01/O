@@ -166,7 +166,6 @@ def type_email_and_submit(email):
     print("Pasted the 4-digit code into AliExpress and submitted.")
 
 
-
     logging.info("4. Clicking the 'Suivant' button for the email input.")
     next_button = driver.find_element(By.ID, "nextButton")
     next_button.click()
