@@ -74,13 +74,6 @@ def is_firefox_open():
 
 
 
-time.sleep(2)
-logging.info("16. Opening Outlook mail in the same tab.")
-driver.get("https://outlook.live.com/mail/0/")  # Opens in the same tab
-time.sleep(5)  # Allow time to load the page
-
-
-
 # Function to open CMD using Win + R shortcut and type 'start firefox'
 def open_cmd_and_run_firefox():
     pyautogui.hotkey('win', 'r')  # Open the Run window
@@ -277,10 +270,11 @@ def main():
 
     time.sleep(4)
     
-    # Task 16: Open a new tab with the URL outlook.live.com/mail and then continue with Task 17
-    logging.info("16. Opening a new tab with outlook.live.com/mail.")
-    driver.execute_script("window.open('https://outlook.live.com/mail/0/?nlp=1&cobrandid=ab0455a0-8d03-46b9-b18b-df2f57b9e44c&deeplink=owa%2f0%2f%3fstate%3d1%26redirectTo%3daHR0cHM6Ly9vdXRsb29rLmxpdmUuY29tL21haWwvMC8&RpsCsrfState=e19a238c-4b90-2f4d-6e51-56fcf8533919&url=%2fowa%2f0%2f%3fnlp%253d1%2526cobrandid%253dab0455a0-8d03-46b9-b18b-df2f57b9e44c%2526deeplink%253dowa%25252f0%25252f%25253fstate%25253d1%252526redirectTo%25253daHR0cHM6Ly9vdXRsb29rLmxpdmUuY29tL21haWwvMC8%2526RpsCsrfState%253de19a238c-4b90-2f4d-6e51-56fcf8533919');")
-    time.sleep(5)  # Wait for the tab to open
+   time.sleep(2)
+logging.info("16. Opening Outlook mail in the same tab.")
+driver.get("https://outlook.live.com/mail/0/")  # Opens in the same tab
+time.sleep(5)  # Allow time to load the page
+
 
     # Task 17: Open CMD and Firefox, navigate to AliExpress, and enter the email
     logging.info("17. Opening CMD and Firefox, navigating to AliExpress.")
