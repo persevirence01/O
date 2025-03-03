@@ -260,15 +260,30 @@ def main():
     logging.info("Notification sent to solve CAPTCHA.")
     time.sleep(5)
 
-    # Task 16: Scan for "Oui" or "Ok" buttons and click the first one
-    logging.info("16. Scanning for 'Oui' or 'Ok' buttons.")
-    buttons = [
-        (By.ID, "acceptButton"),  # "Oui" button
-        (By.XPATH, "//*[@id='id__0']"),  # "Ok" button
-    ]
-    scan_and_click(buttons)
+# Task 16: Scan for "Oui" or "Ok" buttons and click the first one
+logging.info("16. Scanning for 'Oui' or 'Ok' buttons.")
 
-    time.sleep(6)
+buttons = [
+    (By.ID, "acceptButton"),  # "Oui" button
+    (By.XPATH, "//*[@id='id__0']"),  # "Ok" button
+    (By.XPATH, "//button[contains(text(),'Oui') or contains(text(),'Ok')]"),  # Extra check
+]
+
+for button_locator in buttons:
+    try:
+        button = WebDriverWait(driver, 10).until(
+            EC.element_to_be_clickable(button_locator)
+        )
+        driver.execute_script("arguments[0].scrollIntoView(true);", button)  # Scroll to button
+        time.sleep(1)  # Short delay
+        button.click()
+        logging.info(f"Clicked button: {button_locator}")
+        break  # Exit loop if a button is clicked
+    except Exception as e:
+        logging.warning(f"Could not click button {button_locator}: {e}")
+
+time.sleep(6)
+
 
     # Task 16.5: Open Outlook inbox in the same tab before launching CMD
     logging.info("16.5 Opening Outlook inbox.")
