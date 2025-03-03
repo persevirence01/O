@@ -260,7 +260,7 @@ def main():
     logging.info("Notification sent to solve CAPTCHA.")
     time.sleep(5)
 
-# Task 16: Scan for "Oui" or "Ok" buttons and click the first one
+   # Task 16: Scan for "Oui" or "Ok" buttons and click the first one
 logging.info("16. Scanning for 'Oui' or 'Ok' buttons.")
 
 buttons = [
@@ -284,11 +284,11 @@ for button_locator in buttons:
 
 time.sleep(6)
 
+# Task 16.5: Open Outlook inbox in the same tab before launching CMD
+logging.info("16.5 Opening Outlook inbox.")
+driver.get("https://outlook.live.com/mail/0/")
+time.sleep(5)  # Allow time for the page to load
 
-    # Task 16.5: Open Outlook inbox in the same tab before launching CMD
-    logging.info("16.5 Opening Outlook inbox.")
-    driver.get("https://outlook.live.com/mail/0/")
-    time.sleep(5)  # Allow time for the page to load
 
     # Task 17: Open CMD and Firefox, navigate to AliExpress, and enter the email
     logging.info("17. Opening CMD and Firefox, navigating to AliExpress.")
