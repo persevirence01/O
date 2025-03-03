@@ -201,7 +201,7 @@ def main():
     year_input.send_keys(str(random_year))
     logging.info(f"13. Entered random year: {random_year}")
 
-    time.sleep(3)
+     time.sleep(3)
     
     logging.info("14. Clicking the 'Suivant' button for birthdate.")
     next_button_birth = driver.find_element(By.ID, "nextButton")
@@ -217,37 +217,19 @@ def main():
 
     # Task 16: Scan for "Oui" or "Ok" buttons and click the first one
     logging.info("16. Scanning for 'Oui' or 'Ok' buttons.")
-
     buttons = [
         (By.ID, "acceptButton"),  # "Oui" button
         (By.XPATH, "//*[@id='id__0']"),  # "Ok" button
-        (By.XPATH, "//button[contains(text(),'Oui') or contains(text(),'Ok')]"),  # Extra check
     ]
+    scan_and_click(buttons)
 
-    button_clicked = False
-    for button_locator in buttons:
-        try:
-            button = WebDriverWait(driver, 10).until(
-                EC.element_to_be_clickable(button_locator)
-            )
-            driver.execute_script("arguments[0].scrollIntoView(true);", button)  # Scroll to button
-            time.sleep(1)  # Short delay
-            button.click()
-            logging.info(f"Clicked button: {button_locator}")
-            button_clicked = True
-            break  # Exit loop if a button is clicked
-        except Exception as e:
-            logging.warning(f"Could not click button {button_locator}: {e}")
+    time.sleep(4)
     
-    if not button_clicked:
-        logging.warning("No 'Oui' or 'Ok' button clicked.")
+    # Task 16: Open a new tab with the URL outlook.live.com/mail and then continue with Task 17
+    logging.info("16. Opening a new tab with outlook.live.com/mail.")
+    driver.execute_script("window.open('https://outlook.live.com/mail/0/?nlp=1&cobrandid=ab0455a0-8d03-46b9-b18b-df2f57b9e44c&deeplink=owa%2f0%2f%3fstate%3d1%26redirectTo%3daHR0cHM6Ly9vdXRsb29rLmxpdmUuY29tL21haWwvMC8&RpsCsrfState=e19a238c-4b90-2f4d-6e51-56fcf8533919&url=%2fowa%2f0%2f%3fnlp%253d1%2526cobrandid%253dab0455a0-8d03-46b9-b18b-df2f57b9e44c%2526deeplink%253dowa%25252f0%25252f%25253fstate%25253d1%252526redirectTo%25253daHR0cHM6Ly9vdXRsb29rLmxpdmUuY29tL21haWwvMC8%2526RpsCsrfState%253de19a238c-4b90-2f4d-6e51-56fcf8533919');")
+    time.sleep(5)  # Wait for the tab to open
 
-    time.sleep(6)
-
-    # Task 16.5: Open Outlook inbox in the same tab before launching CMD
-    logging.info("16.5 Opening Outlook inbox.")
-    driver.get("https://outlook.live.com/mail/0/")
-    time.sleep(5)  # Allow time for the page to load
 
     # Task 17: Open CMD and Firefox, navigate to AliExpress, and enter the email
     logging.info("17. Opening CMD and Firefox, navigating to AliExpress.")
