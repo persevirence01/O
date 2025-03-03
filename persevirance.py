@@ -258,8 +258,6 @@ def main():
         timeout=10,
     )
     logging.info("Notification sent to solve CAPTCHA.")
-   
-    scan_and_click(buttons)
     time.sleep(5)
 
     # Task 16: Scan for "Oui" or "Ok" buttons and click the first one
@@ -289,10 +287,6 @@ def main():
 
     # Type the random email generated above and submit it
     type_email_and_submit(random_email)
-
-    # Press Tab twice, type "Zidane" and submit
-    type_name_and_submit()
-
 
 if __name__ == "__main__":
     main()
