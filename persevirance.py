@@ -259,7 +259,6 @@ def main():
     )
     logging.info("Notification sent to solve CAPTCHA.")
     time.sleep(5)
-
     # Task 16: Scan for "Oui" or "Ok" buttons and click the first one
     logging.info("16. Scanning for 'Oui' or 'Ok' buttons.")
     buttons = [
@@ -267,7 +266,6 @@ def main():
         (By.XPATH, "//*[@id='id__0']"),  # "Ok" button
     ]
     scan_and_click(buttons)
-
     time.sleep(6)
     # Task 16.5: Open Outlook inbox in the same tab before launching CMD
     logging.info("16.5 Opening Outlook inbox.")
