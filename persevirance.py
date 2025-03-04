@@ -76,7 +76,10 @@ def open_cmd_and_run_firefox():
     time.sleep(2)
     pyautogui.write('start firefox')  # Type 'start firefox' to open Firefox
     pyautogui.press('enter')
-    time.sleep(7)  # Wait for Firefox to launch
+    time.sleep(2)  # Wait for Firefox to launch
+    
+    # Minimize the CMD window
+    pyautogui.hotkey('win', 'down')
 
 # Function to switch to the Firefox window (Alt + Tab)
 def focus_firefox():
