@@ -86,8 +86,7 @@ def focus_firefox():
     pyautogui.hotkey('alt', 'tab')  # Switch to the next window (Firefox)
 
 # Function to focus the Firefox address bar using Ctrl + L
-def focus_address_bar():
-    pyautogui.hotkey('ctrl', 'l')  # Focus the address bar in Firefox
+keyboard.press_and_release('ctrl+l')
 
 # Exit CMD properly
 def exit_cmd():
@@ -225,6 +224,8 @@ def main():
         (By.XPATH, "//*[@id='id__0']"),  # "Ok" button
     ]
     scan_and_click(buttons)
+
+
 
     time.sleep(8)
     # Task 16.5: Open Outlook inbox in the same tab before launching CMD
