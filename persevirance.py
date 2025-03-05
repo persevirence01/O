@@ -76,20 +76,8 @@ def open_cmd_and_run_firefox():
     time.sleep(2)
     pyautogui.write('start firefox')  # Type 'start firefox' to open Firefox
     pyautogui.press('enter')
-    time.sleep(7)  # Wait for Firefox to launch
+    time.sleep(3)  # Wait for Firefox to launch
 
-# Function to switch to the Firefox window (Alt + Tab)
-def focus_firefox():
-    pyautogui.hotkey('alt', 'tab')  # Switch to the next window (Firefox)
-
-# Function to focus the Firefox address bar using Ctrl + L
-def focus_address_bar():
-    pyautogui.hotkey('ctrl', 'l')  # Focus the address bar in Firefox
-
-# Exit CMD properly
-    pyautogui.write('exit')
-    pyautogui.press('enter')
-   
 
 # Function to paste the AliExpress URL in the address bar
 def open_aliexpress():
