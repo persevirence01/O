@@ -76,9 +76,11 @@ def open_cmd_and_run_firefox():
     time.sleep(2)
     pyautogui.write('start firefox')  # Type 'start firefox' to open Firefox
     pyautogui.press('enter')
+    time.sleep(2)
     # Exit CMD properly
     pyautogui.write('exit')
     pyautogui.press('enter')
+    time.sleep(5)
    
 
 # Function to paste the AliExpress URL in the address bar
