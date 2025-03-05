@@ -217,13 +217,15 @@ def main():
     logging.info("Notification sent to solve CAPTCHA.")
     time.sleep(5)
 
-    # Task 16: Scan for "Oui" or "Ok" buttons and click the first one
+     # Task 16: Scan for "Oui" or "Ok" buttons and click the first one
     logging.info("16. Scanning for 'Oui' or 'Ok' buttons.")
     buttons = [
         (By.ID, "acceptButton"),  # "Oui" button
         (By.XPATH, "//*[@id='id__0']"),  # "Ok" button
     ]
     scan_and_click(buttons)
+    time.sleep(2)
+    pyautogui.press('enter')
 
 
 
