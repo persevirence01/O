@@ -76,22 +76,10 @@ def open_cmd_and_run_firefox():
     time.sleep(2)
     pyautogui.write('start firefox')  # Type 'start firefox' to open Firefox
     pyautogui.press('enter')
-    time.sleep(2)  # Wait for Firefox to launch
-    
-    # Minimize the CMD window
-    pyautogui.hotkey('win', 'down')
-
-# Function to switch to the Firefox window (Alt + Tab)
-def focus_firefox():
-    pyautogui.hotkey('alt', 'tab')  # Switch to the next window (Firefox)
-
-# Function to focus the Firefox address bar using Ctrl + L
-keyboard.press_and_release('ctrl+l')
-
-# Exit CMD properly
-def exit_cmd():
+    # Exit CMD properly
     pyautogui.write('exit')
     pyautogui.press('enter')
+   
 
 # Function to paste the AliExpress URL in the address bar
 def open_aliexpress():
@@ -100,6 +88,9 @@ def open_aliexpress():
     pyautogui.write("https://login.aliexpress.com/?spm=a2g0o.login_signup.register.0.0.3e1a2d67UZoVAA")  # AliExpress URL
     pyautogui.press('enter')  # Press Enter to go to the URL
     time.sleep(5)  # Wait for the page to load
+    
+    
+   
 
 # Function to simulate pressing Tab 6 times in 1 second with 0.2s delay
 def press_tab_6_times():
